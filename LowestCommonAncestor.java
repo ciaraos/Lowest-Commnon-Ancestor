@@ -1,4 +1,4 @@
-//  Common Ancestor in a Binary Tree 
+//  Lowest Common Ancestor in a Binary Tree 
 import java.util.ArrayList; 
 import java.util.List; 
   
