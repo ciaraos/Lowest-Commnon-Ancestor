@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -64,6 +66,17 @@ class LCATest {
 		testTree.root.right = new Node(3); 
 		testTree.root.left.left = new Node(4); 
 		assertEquals("LCA of non existent node",testTree.findLowestCommonAncestor(8, 7),-1);
+	}
+	
+	@Test
+	public void testForNoRoot()
+	{
+		LowestCommonAncestor testTree = new LowestCommonAncestor(); 
+		testTree.root= new Node(1); 
+		testTree.root.left = new Node(2); 
+		testTree.root.right = new Node(3); 
+		testTree.root.left.left = new Node(4);
+		assertEquals("tree with no root.",testTree.findLowestCommonAncestor(4, 0),-1);
 	}
 }
 
