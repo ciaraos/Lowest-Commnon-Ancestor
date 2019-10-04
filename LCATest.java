@@ -54,4 +54,16 @@ class LCATest {
 		assertEquals("LCA(3,4) should be 1.",testTree.findLowestCommonAncestor(3,4),1);
 		assertEquals("LCA(2,4) should be 2.",testTree.findLowestCommonAncestor(2,4),2);
 	}
+	
+	@Test
+	public void testForAbsentNode() 
+	{
+		LowestCommonAncestor testTree = new LowestCommonAncestor(); 
+		testTree.root= new Node(1); 
+		testTree.root.left = new Node(2); 
+		testTree.root.right = new Node(3); 
+		testTree.root.left.left = new Node(4); 
+		assertEquals("LCA of non existent node",testTree.findLowestCommonAncestor(8, 7),-1);
+	}
 }
+
