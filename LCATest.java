@@ -25,6 +25,14 @@ class LCATest {
 	}
 	
 	@Test
+	public void test2NodeBT() {
+		LowestCommonAncestor testTree = new LowestCommonAncestor();
+		testTree.root = new Node(1);
+		testTree.root.left = new Node(2);
+		assertEquals("Testing a tree with two nodes", testTree.findLowestCommonAncestor(1, 2), 1);
+	}
+	
+	@Test
 	public void testLCA() {
 		LowestCommonAncestor testTree = new LowestCommonAncestor();
 		testTree.root = new Node(3);
