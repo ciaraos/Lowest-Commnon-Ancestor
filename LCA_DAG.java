@@ -88,4 +88,60 @@ public class LCA_DAG {
 		}
 		return reverse;
 	}
+
+	public int LCA(int v, int w) {
+
+		if (!checkDAG || E == 0) {
+			return -1;
+		}
+		boolean hasCommonAncestor = false;
+		validateVertex(v);
+		validateVertex(w);
+
+		LCA_DAG reversed = this.reverse();
+		ArrayList<Integer> commonAncestors = new ArrayList<Integer>();
+
+		ArrayList<Integer> search1 = reversed.BFS(v);
+		ArrayList<Integer> search2 = reversed.BFS(w);
+
+		for (int i = 0; i < search1.size(); i++) {
+			for (int t = 0; t < search2.size(); t++) {
+				if (search1.get(i) == search2.get(t)) {
+					commonAncestors.add(search1.get(i));
+					hasCommonAncestor = true;
+				}
+			}
+		}
+
+		if (hasCommonAncestor) {
+			return commonAncestors.get(0);
+		} else {
+			return -1;
+		}
+	}
+
+	private ArrayList<Integer> BFS(int s) {
+		boolean visited[] = new boolean[V];
+		LinkedList<Integer> queue = new LinkedList<Integer>();
+		ArrayList<Integer> result = new ArrayList<Integer>();
+
+		visited[s] = true;
+		queue.add(s);
+
+		while (queue.size() != 0) {
+			s = queue.poll();
+			result.add(s);
+			Iterator<Integer> i = adj[s].listIterator();
+			while (i.hasNext()) {
+				int n = i.next();
+				if (!visited[n]) {
+					visited[n] = true;
+					queue.add(n);
+				}
+			}
+		}
+
+		return result;
+	}
+
 }
