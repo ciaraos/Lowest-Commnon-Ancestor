@@ -111,4 +111,21 @@ class DAG_test {
 			DAG4.addEdge(2, 0);
 			assertFalse("Test E() and addE()", DAG4.E()== 10);
 		}
+
+		@Test
+		void testNoCycle() {
+		//Test for DAG with no cycles
+			LCA_DAG DAG1 = new LCA_DAG(9);
+			DAG1.addEdge(1, 3);
+			DAG1.addEdge(3, 4);
+			DAG1.addEdge(8, 4);
+			DAG1.addEdge(3, 8);
+			DAG1.isAcyclic();
+			assertTrue("Test isAcyclic() for no cycles", DAG1.checkDAG);
+			
+			//test empty DAG for cycles
+			LCA_DAG DAG2 = new LCA_DAG(9);
+			DAG2.isAcyclic();
+			assertTrue("Test isAcyclic() with empty DAG", DAG2.checkDAG);
+		}
 	}
