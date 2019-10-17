@@ -51,5 +51,25 @@ class DAG_test {
 			assertFalse("Test V() is not a match", 2 == DAG4.V());
 
 		}
+		
 
+		@Test 
+		void TestValidateV(){
+		//if vertex is not valid, throw exception
+			LCA_DAG DAG = new LCA_DAG(5);
+			try {
+				DAG.addEdge(-1,-1);
+			} 
+			catch (IllegalArgumentException e) {
+			}
+
+			LCA_DAG DAG2 = new LCA_DAG(3);
+			try {
+				DAG2.addEdge(2,2);
+				DAG2.addEdge(2,1);
+				DAG2.addEdge(1,9);
+			} 
+			catch (IllegalArgumentException e) {
+			}
+		}
 	}
