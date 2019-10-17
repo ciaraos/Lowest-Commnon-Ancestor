@@ -148,4 +148,43 @@ class DAG_test {
 		assertFalse("Test isAcyclic() with cycles ", DAG2.checkDAG);	
 	}
 
+	@Test
+	void testLCA() {
+		//Tests for LCA
+
+		//Test LCA() on empty graph
+		LCA_DAG DAG1 = new LCA_DAG(200);
+		assertEquals("Test LCA with empty graph.", DAG1.LCA(1, 3),-1);
+
+		//Test LCA()
+		LCA_DAG DAG2 = new LCA_DAG(8);
+		DAG2.addEdge(1, 2);
+		DAG2.addEdge(1, 3);
+		DAG2.addEdge(2, 4);
+		DAG2.addEdge(2, 5);
+		DAG2.addEdge(5, 7);
+		DAG2.addEdge(3, 6);
+		assertEquals("Test LCA(7,3) returns 1", DAG2.LCA(7, 3), 1);
+		assertEquals("Test LCA(5,3) returns 2", DAG2.LCA(5, 3), 1);
+		assertEquals("Test LCA(7,2) returns 1", DAG2.LCA(7, 2), 2);
+
+		//Test LCA() on graph with a cycle
+		LCA_DAG DAG3 = new LCA_DAG(8);
+		DAG3.addEdge(2, 3);
+		DAG3.addEdge(3, 4);
+		assertEquals("Test LCA() on graph with cycle.",DAG3.LCA(1, 3),-1);
+
+		//Test LCA() on graph with no common Ancestors
+		LCA_DAG DAG4 = new LCA_DAG(7);
+		DAG4.addEdge(1, 5);
+		DAG4.addEdge(2, 4);
+		DAG4.addEdge(4, 5);
+		DAG4.addEdge(3, 6);
+		assertEquals("Test LCA() on graph with no common Ancestors",DAG4.LCA(1, 3),-1);
+
+		//Test LCA() with edge = 0
+		LCA_DAG DAG5 = new LCA_DAG(8);
+		DAG5.addEdge(0, 0);
+		assertEquals("Test LCA() when edge is 0.",DAG5.LCA(1, 3),-1);
+	}
 }
