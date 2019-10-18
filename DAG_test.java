@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 class DAG_test {
 
+	// testing that the constructor works
 	@Test
-	void testConstructor() {
-		// testing that the constructor works
+	void testConstructor() { 
 		LCA_DAG DAG = new LCA_DAG(7);
 		assertEquals("Test Constructor", 7, DAG.V());
 
@@ -31,9 +31,9 @@ class DAG_test {
 		assertFalse("Test Constructor", 9 == DAG5.V());
 	}
 
+	//Test V() returns correct vertex
 	@Test
 	void testV() {
-		//Test V() returns correct vertex
 		LCA_DAG DAG = new LCA_DAG(1);
 		int vertex = DAG.V();
 		assertEquals("Test V() returns 1", 1, vertex);
@@ -51,9 +51,9 @@ class DAG_test {
 		assertFalse("Test V() is not a match", 2 == DAG4.V());
 	}
 
+	//if vertex is not valid, throw exception
 	@Test 
 	void TestValidateV(){
-		//if vertex is not valid, throw exception
 		LCA_DAG DAG = new LCA_DAG(5);
 		try {
 			DAG.addEdge(-1,-1);
@@ -71,9 +71,9 @@ class DAG_test {
 		}
 	}
 
+	//Testing E() and addE() functions
 	@Test
 	void testEandAddEdge() {
-		//Testing E() and addE() functions
 		LCA_DAG DAG = new LCA_DAG(4);
 		DAG.addEdge(1, 2);
 		DAG.addEdge(2, 3);
@@ -109,9 +109,9 @@ class DAG_test {
 		assertFalse("Test E() and addE()", DAG4.E()== 10);
 	}
 
+	//Test for DAG with no cycles
 	@Test
 	void testNoCycle() {
-		//Test for DAG with no cycles
 		LCA_DAG DAG1 = new LCA_DAG(9);
 		DAG1.addEdge(1, 3);
 		DAG1.addEdge(3, 4);
@@ -126,9 +126,9 @@ class DAG_test {
 		assertTrue("Test isAcyclic() with empty DAG", DAG2.checkDAG);
 	}
 
+	//Test DAG with cycle
 	@Test 
-	void testContainsCycle() {
-		//Test DAG with cycle 
+	void testContainsCycle() { 
 		LCA_DAG DAG1 = new LCA_DAG(7);
 		DAG1.addEdge(1, 3);
 		DAG1.addEdge(3, 4);
@@ -148,10 +148,9 @@ class DAG_test {
 		assertFalse("Test isAcyclic() with cycles ", DAG2.checkDAG);	
 	}
 
+	//Tests for LCA
 	@Test
 	void testLCA() {
-		//Tests for LCA
-
 		//Test LCA() on empty graph
 		LCA_DAG DAG1 = new LCA_DAG(200);
 		assertEquals("Test LCA with empty graph.", DAG1.LCA(1, 3),-1);
